@@ -1,0 +1,40 @@
+[user]
+    isset = false
+	name = Jan-Pieter Baert
+	signingkey = 117A020A52B73DE56F58AB44C61C42632C5952F3
+    email = jan-pieter@baert.jp.net
+[hub]
+	host = github.com
+	host = github.ugent.be
+[includeIf "gitdir:~/git_repos/_StuW/"]
+    path = ~/git_repos/git-configs/ugent
+[commit]
+	gpgsign = yes
+[color]
+	ui = auto
+[core]
+	excludesfile = /home/jan-pieter/.gitignore
+[alias]
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+    # Delete all local branches but master and the current one, only if they are fully merged with master.
+    br-delete-useless = "!f(){\
+        git branch | grep -v "master" | grep -v ^* | xargs git branch -d && git remote prune origin;\
+    }; f"
+    # Delete all local branches but master and the current one.
+    br-delete-useless-force = "!f(){\
+        git branch | grep -v "master" | grep -v ^* | xargs git branch -D && git remote prune origin;\
+    }; f"
+    thrust = "!f() { until git push $@; do sleep 0.5; done; }; f"
+[init]
+	defaultBranch = master
+[tag]
+	forceSignAnnotated = true
+    gpgSign = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[checkout]
+	defaultRemote = origin

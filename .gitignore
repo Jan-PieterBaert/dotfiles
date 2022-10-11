@@ -1,0 +1,28 @@
+*.tar.xz
+*.tar.gz
+*.tar.bz2
+*.tgz
+*.zip
+*.7z
+*.rar
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+*.swp
+*~
+.directory
+.Trash-*
+# LibreOffice
+.~lock.*#
+# Python
+.venv
+venv3
+pip-selfcheck.json
+**__pycache__/
+**.mypy_cache
+.idea
+*.md.backup
+gitstats
+yarn.lock
+keystore.p12

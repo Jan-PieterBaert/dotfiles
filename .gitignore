@@ -26,3 +26,4 @@ pip-selfcheck.json
 gitstats
 yarn.lock
 keystore.p12
+.config/hub

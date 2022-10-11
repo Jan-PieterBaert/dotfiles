@@ -1,0 +1,76 @@
+# typo aliasses
+alias cls=clear
+alias dir=ls -al
+alias vi=vim
+alias vim="nvim -p"
+alias nano=nvim
+alias se=sudoedit
+alias rsync="rsync --progress"
+
+# general aliasses
+alias update_time="sudo ntpdate -s ntp.ugent.be"
+alias serveDirectory="python3 -m http.server"
+alias fuck="sudo"
+alias copy="xclip -selection clipboard"
+alias capsState="xset -q | grep \"Caps Lock\" | sed \"s/^.*Caps Lock: *\([onf]*\) .*$/\1/\""
+alias ayy=yay
+alias ":q"=exit
+alias ":wq"=exit
+alias make="make -j8"
+alias ip="ip -c"
+alias rm="rm -v"
+alias evince=zathura
+alias murder="kill -9"
+alias pptToPdf="unoconv -f pdf"
+alias qr='qrencode -m 2 -t utf8 <<< "$1"'
+alias wcDir='find . -type f -exec cat {} + | wc -l'
+alias 'gpf!'='gpf' # force push without lease is not what we want
+alias discord='discord --no-sandbox'
+alias qr-read=zbarimg
+alias ls="ls --color"
+alias egrep="grep -E"
+
+#git aliasses
+alias gcm="git checkout master || git checkout main"
+alias gtp="git push --tags origin"
+alias gpsup='git push --set-upstream origin $(git_current_branch)'
+alias gcd="git checkout develop || git checkout dev"
+alias gl="git pull"
+
+#kitty aliasses
+alias kssh="kitty +kitten ssh"
+
+#network aliasses
+alias fixWifi="sudo systemctl restart wpa_supplicant@wlo1"
+alias stopWifi="sudo systemctl stop wpa_supplicant@wlo1"
+alias startFlight="sudo systemctl stop bluetooth.service && sudo systemctl stop wpa_supplicant@wlo1.service && notify-send 'entered flight mode'"
+alias fixEth="sudo systemctl restart dhcpcd.service"
+alias wifiStatus="watch wpa_cli -i wlo1 status"
+alias editWifiConf="sudoedit /etc/wpa_supplicant/wpa_supplicant-wlo1.conf && fixWifi"
+
+#git aliasses
+alias gitStatusSub="find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status && echo)' \;"
+alias gpp="git pull origin && git push origin"
+
+# package-list backup and down
+alias backdown_yay="yay -S --needed - < ~/pkglist.txt"
+alias backup_yay="yay -Qqe > ~/pkglist.txt"
+alias yay="time yay"
+
+# bumblebee aliasses
+alias startbbs="sudo systemctl start bumblebeed.service"
+alias stopbbs="sudo systemctl stop bumblebeed.service"
+alias statusbbs="sudo systemctl status bumblebeed.service"
+
+# stackstorage aliasses
+alias startStack="sudo mount ~/stackstorage"
+alias stopStack="sudo umount ~/stackstorage"
+
+# kelder aliasses
+alias kelderforward="pax11publish -e -S 10.0.0.5"
+alias cammie='curl https://kelder.zeus.ugent.be/webcam/video/mjpg.cgi | mpv --no-correct-pts --fps 5 -'
+alias keldermuziek="ncmpcpp -h 10.0.0.5"
+alias pong="ping ugent.be"
+alias playOnHoek="PULSE_SERVER=10.0.0.5 "
+alias keldersay="curl 'https://kelder.zeus.ugent.be/messages/' -H 'Content-Type: text/plain' -H 'X-Username: JP' --compressed --data-binary"
+alias kelderlisten="curl https://kelder.zeus.ugent.be/messages/ | w3m -T text/html -dump | less"

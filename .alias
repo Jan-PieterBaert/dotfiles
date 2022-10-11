@@ -50,7 +50,6 @@ alias editWifiConf="sudoedit /etc/wpa_supplicant/wpa_supplicant-wlo1.conf && fix
 
 #git aliasses
 alias gitStatusSub="find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status && echo)' \;"
-alias gpp="git pull origin && git push origin"
 
 # package-list backup and down
 alias backdown_yay="yay -S --needed - < ~/pkglist.txt"

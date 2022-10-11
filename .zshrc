@@ -147,3 +147,4 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 source ~/.zshrc-private
+source ~/.git-alias

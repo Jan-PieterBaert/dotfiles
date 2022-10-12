@@ -1,9 +1,12 @@
 # typo aliasses
+export WIFI_DEVICE=wlo1
+
 alias cls=clear
 alias dir=ls -al
+alias nano=vim
+alias nv=vim
 alias vi=vim
 alias vim="nvim -p"
-alias nano=nvim
 alias se=sudoedit
 alias rsync="rsync --progress"
 
@@ -24,29 +27,21 @@ alias murder="kill -9"
 alias pptToPdf="unoconv -f pdf"
 alias qr='qrencode -m 2 -t utf8 <<< "$1"'
 alias wcDir='find . -type f -exec cat {} + | wc -l'
-alias 'gpf!'='gpf' # force push without lease is not what we want
 alias discord='discord --no-sandbox'
 alias qr-read=zbarimg
 alias ls="ls --color"
 alias egrep="grep -E"
 
-#git aliasses
-alias gcm="git checkout master || git checkout main"
-alias gtp="git push --tags origin"
-alias gpsup='git push --set-upstream origin $(git_current_branch)'
-alias gcd="git checkout develop || git checkout dev"
-alias gl="git pull"
-
 #kitty aliasses
 alias kssh="kitty +kitten ssh"
 
 #network aliasses
-alias fixWifi="sudo systemctl restart wpa_supplicant@wlo1"
-alias stopWifi="sudo systemctl stop wpa_supplicant@wlo1"
-alias startFlight="sudo systemctl stop bluetooth.service && sudo systemctl stop wpa_supplicant@wlo1.service && notify-send 'entered flight mode'"
+alias fixWifi="sudo systemctl restart wpa_supplicant@$WIFI_DEVICE"
+alias stopWifi="sudo systemctl stop wpa_supplicant@$WIFI_DEVICE"
+alias startFlight="sudo systemctl stop bluetooth.service && sudo systemctl stop wpa_supplicant@$WIFI_DEVICE.service && notify-send 'entered flight mode'"
 alias fixEth="sudo systemctl restart dhcpcd.service"
-alias wifiStatus="watch wpa_cli -i wlo1 status"
-alias editWifiConf="sudoedit /etc/wpa_supplicant/wpa_supplicant-wlo1.conf && fixWifi"
+alias wifiStatus="watch wpa_cli -i $WIFI_DEVICE status"
+alias editWifiConf="sudoedit /etc/wpa_supplicant/wpa_supplicant-$WIFI_DEVICE.conf && fixWifi"
 
 #git aliasses
 alias gitStatusSub="find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status && echo)' \;"
@@ -57,13 +52,9 @@ alias backup_yay="yay -Qqe > ~/pkglist.txt"
 alias yay="time yay"
 
 # bumblebee aliasses
-alias startbbs="sudo systemctl start bumblebeed.service"
-alias stopbbs="sudo systemctl stop bumblebeed.service"
-alias statusbbs="sudo systemctl status bumblebeed.service"
-
-# stackstorage aliasses
-alias startStack="sudo mount ~/stackstorage"
-alias stopStack="sudo umount ~/stackstorage"
+#alias startbbs="sudo systemctl start bumblebeed.service"
+#alias stopbbs="sudo systemctl stop bumblebeed.service"
+#alias statusbbs="sudo systemctl status bumblebeed.service"
 
 # kelder aliasses
 alias kelderforward="pax11publish -e -S 10.0.0.5"
@@ -72,4 +63,8 @@ alias keldermuziek="ncmpcpp -h 10.0.0.5"
 alias pong="ping ugent.be"
 alias playOnHoek="PULSE_SERVER=10.0.0.5 "
 alias keldersay="curl 'https://kelder.zeus.ugent.be/messages/' -H 'Content-Type: text/plain' -H 'X-Username: JP' --compressed --data-binary"
+alias keldersay="curl 'https://kelder.zeus.ugent.be/messages/' -H 'Content-Type: text/plain' -H 'X-Username: JP' --compressed --data-binary"
 alias kelderlisten="curl https://kelder.zeus.ugent.be/messages/ | w3m -T text/html -dump | less"
+
+
+alias qr='qrencode -m 2 -t utf8 <<< "$1"'

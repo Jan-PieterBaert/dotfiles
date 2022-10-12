@@ -1,0 +1,377 @@
+# i3 config file (v4)
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+#
+# This config file uses keycodes (bindsym) and was written for the QWERTY
+# layout.
+#
+# To get a config file with the same key positions, but for your current
+# layout, use the i3-config-wizard
+#
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# font pango:monospace 6
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:DejaVu Sans Mono 5.5
+font pango:DejaVu Sans Mono 6
+
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn't scale on retina/hidpi displays.
+
+# set super mods (at the moment Windows is $mod, AltGr is $mod1 and Alt is $mod2)
+    set $mod Mod4
+    set $mod1 Mod5
+    set $mod2 Mod1
+
+# set some variables
+    set $scriptlocation $HOME/git_repos/custum_scripts
+    # set $terminal /usr/bin/alacritty
+    set $terminal /usr/bin/kitty
+
+# use these keys for focus, movement, and resize directions when reaching for
+# the arrows is not convenient
+# the directions are like vim!
+    set $up k
+    set $down j
+    set $left h
+    set $right l
+
+# use Mouse+$mod to drag floating windows to their wanted position
+    floating_modifier $mod
+
+# start a terminal
+    bindsym $mod+Return exec $terminal
+
+# kill focused window
+    bindsym $mod+Shift+q kill
+    bindsym $mod2+F4 kill
+
+# Rofi things, it's just the best ever, MAKE ROFI GREAT AGAIN!
+	# alternative to dmenu, we use the rofi-version
+	# bindsym $mod+d exec "LC_ALL=C rofi -show run"
+	bindsym $mod+d exec "LC_ALL=C rofi -show combi -show-icons"
+	# this shows all open windows across workspaces
+	bindsym $mod+bracketleft exec "LC_ALL=C rofi -show combi -show-icons"
+	# my (local) passwordmanager (unix pass)
+	bindsym $mod+bracketright exec "LC_ALL=C rofi-pass"
+
+
+# change focus
+	bindsym $mod+$left focus left
+	bindsym $mod+$down focus down
+	bindsym $mod+$up focus up
+	bindsym $mod+$right focus right
+
+	# focus the parent container
+	bindsym $mod+a focus parent
+
+	# focus the child container
+	bindsym $mod+z focus child
+
+
+# alternatively, you can use the cursor keys:
+	bindsym $mod+Left focus left
+	bindsym $mod+Down focus down
+	bindsym $mod+Up focus up
+	bindsym $mod+Right focus right
+
+# move focused window
+	bindsym $mod+Shift+$left move left
+	bindsym $mod+Shift+$down move down
+	bindsym $mod+Shift+$up move up
+	bindsym $mod+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+	bindsym $mod+Shift+Left move left
+	bindsym $mod+Shift+Down move down
+	bindsym $mod+Shift+Up move up
+	bindsym $mod+Shift+Right move right
+
+# change container layout (tabbed, toggle split)
+	bindsym $mod+w layout tabbed
+	bindsym $mod+e layout toggle split
+
+# Change split mode
+	# split in horizontal orientation
+	bindsym $mod+g split h
+
+	# split in vertical orientation
+	bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+	bindsym $mod+f fullscreen toggle
+
+# floating and sticky keybindings
+    bindsym $mod+Shift+space floating toggle
+    # bindsym $mod+Shift+s floating enable; sticky enable
+    bindsym $mod+s sticky toggle
+
+# change focus between tiling / floating windows
+    bindsym $mod+space focus mode_toggle
+
+# move the currently focused window to the scratchpad
+    bindsym $mod+Shift+comma move scratchpad
+    bindsym $mod2+Shift+z move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+comma scratchpad show
+    bindsym $mod2+z scratchpad show
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+# We have 13 workspaces because the number row on my keyboard has 3 keys except for the 10 numbers also fuck people who think 13 brings them bad luck
+	set $ws0 "0"
+	set $ws1 "1"
+	set $ws2 "2"
+	set $ws3 "3"
+	set $ws4 "4"
+	set $ws5 "5"
+	set $ws6 "6"
+	set $ws7 "7"
+	set $ws8 "8"
+	set $ws9 "9"
+	set $ws10 "10"
+	set $ws11 "11"
+	set $ws12 "12"
+
+# Define screens for workspaces
+workspace $ws0 output HDMI-0 HDMI-1-0
+workspace $ws1 output eDP-1-1 eDP-1 eDP-2
+workspace $ws2 output eDP-1-1 eDP-1 eDP-2
+workspace $ws4 output DP-0.5 DP-1-0.5
+workspace $ws5 output DP-0.6 DP-1-0.6
+
+# switch to workspace
+	bindsym $mod+grave workspace $ws0
+	bindsym $mod+1 workspace $ws1
+	bindsym $mod+2 workspace $ws2
+	bindsym $mod+3 workspace $ws3
+	bindsym $mod+4 workspace $ws4
+	bindsym $mod+5 workspace $ws5
+	bindsym $mod+6 workspace $ws6
+	bindsym $mod+7 workspace $ws7
+	bindsym $mod+8 workspace $ws8
+	bindsym $mod+9 workspace $ws9
+	bindsym $mod+0 workspace $ws10
+	bindsym $mod+minus workspace $ws11
+	bindsym $mod+equal workspace $ws12
+
+# move focused container to workspace
+	bindsym $mod+Shift+grave move container to workspace $ws0
+	bindsym $mod+Shift+1 move container to workspace $ws1
+	bindsym $mod+Shift+2 move container to workspace $ws2
+	bindsym $mod+Shift+3 move container to workspace $ws3
+	bindsym $mod+Shift+4 move container to workspace $ws4
+	bindsym $mod+Shift+5 move container to workspace $ws5
+	bindsym $mod+Shift+6 move container to workspace $ws6
+	bindsym $mod+Shift+7 move container to workspace $ws7
+	bindsym $mod+Shift+8 move container to workspace $ws8
+	bindsym $mod+Shift+9 move container to workspace $ws9
+	bindsym $mod+Shift+0 move container to workspace $ws10
+	bindsym $mod+Shift+minus move container to workspace $ws11
+	bindsym $mod+Shift+equal move container to workspace $ws12
+
+# workspace mods (move to the next or prev open workspace on current display)
+	bindsym --whole-window $mod+Tab workspace next_on_output
+	bindsym --whole-window $mod+Shift+Tab workspace prev_on_output
+	bindsym --whole-window $mod+BackSpace workspace prev_on_output
+
+# reload the configuration file
+    bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+    bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+    bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Switch between greek and us keyboards
+    bindsym $mod+Escape exec "/home/jan-pieter/git_repos/custum_scripts/greek-switch.sh switch"
+
+
+set $resize_size 2
+# resize window (you can also use the mouse for that)
+	mode "resize" {
+	        # These bindings trigger as soon as you enter the resize mode
+
+	        # Pressing left will shrink the window’s width.
+	        # Pressing right will grow the window’s width.
+	        # Pressing up will shrink the window’s height.
+	        # Pressing down will grow the window’s height.
+	        bindsym $left       resize shrink width $resize_size px or $resize_size ppt
+	        bindsym $down       resize grow height $resize_size px or $resize_size ppt
+	        bindsym $up         resize shrink height $resize_size px or $resize_size ppt
+	        bindsym $right      resize grow width $resize_size px or $resize_size ppt
+
+	        # same bindings, but for the arrow keys
+	        bindsym Left       resize shrink width $resize_size px or $resize_size ppt
+	        bindsym Down       resize grow height $resize_size px or $resize_size ppt
+	        bindsym Up         resize shrink height $resize_size px or $resize_size ppt
+	        bindsym Right      resize grow width $resize_size px or $resize_size ppt
+
+	        # back to normal: Enter or Escape or $mod+r
+	        bindsym Return mode "default"
+	        bindsym Escape mode "default"
+	        bindsym $mod+r mode "default"
+	}
+
+	bindsym $mod+r mode "resize"
+
+# Mode to logout, reboot or shutdown
+	mode "[l]ogout / [h]ibernate / [r]eboot / [s]hutdown / suspend-[t]hen-hibernate / sus[p]end" {
+		bindsym l exit
+		bindsym t exec systemctl suspend-then-hibernate
+		bindsym h exec hibernate_lock
+		bindsym r exec reboot
+		bindsym s exec shutdown now
+		bindsym p exec systemctl suspend
+		bindsym Escape mode "default"
+	}
+	bindsym $mod+Shift+x mode "[l]ogout / [h]ibernate / [r]eboot / [s]hutdown / suspend-[t]hen-hibernate / sus[p]end"
+
+# Set some cool colors for i3
+	# class                 border  bground text    indicator child_border
+	client.focused          #004F00 #000088 #FFFFFF #00004F   #00FF00
+	client.focused_inactive #333333 #5F676A #FFFFFF #484E50   #5F676A
+	client.unfocused        #333333 #222222 #888888 #292D2E   #222222
+	client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
+	client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
+	client.background       #FFFFFF
+
+# Bar settings and hotkeys
+	# Start the i3bar which contains some cool stuff and information from the i3blocks command, there are also a few awesome color settings
+	bar {
+	  mode dock
+	  hidden_state hide
+	  modifier $mod2
+      output HDMI-1-0
+      output HDMI-0
+      output eDP-1
+      output eDP-1-1
+      output eDP-2
+	  position top
+	  status_command i3blocks -c ~/.config/i3/i3blocks.conf
+      font pango:DejaVu Sans Mono 8
+
+    colors {
+     	background #000000
+     	statusline #FFFFFF
+   	  separator  #FF0000
+  	  focused_workspace  #444444 #000088 #FFFFFF
+   	  active_workspace   #333333 #000000 #FFFFFF
+   	  inactive_workspace #333333 #555555 #FFFFFF
+   	  urgent_workspace   #2F343A #900000 #FFFFFF
+   	  binding_mode       #2F343A #900000 #FFFFFF
+ 	  }
+	}
+
+	# Make it possible to toggle the bar to be hidden
+	bindsym $mod+backslash bar mode toggle
+
+#Using below keybindings we can give a certain windw a bar or not
+	bindsym $mod+$mod2+b border normal
+	bindsym $mod+$mod2+n border pixel 0
+
+# Reduce gaps to basically an indicator where the focus is
+	# Set the borderwidth to 1 pixel, almost borderless, but you can see focus + other border/gaps modifications
+	# for_window [class="^.*"] border pixel 1
+	for_window [class="^.*"] border pixel 0
+	#for_window [class="^.*"] border normal
+	#gaps inner 10
+	#gaps outer 10
+	#smart_gaps on
+	new_window normal 0
+	new_float normal 10
+	hide_edge_borders smart
+
+# Move to top right, for video playing
+    bindsym $mod+y floating enable; resize set 720 432; sticky enable; move window to position 125 30
+
+# Change screensaver timeout
+    bindsym $mod+u exec $scriptlocation/screensaver-timeout.bash
+
+# Restart espanso
+    bindsym $mod2+r exec notify-send "Restarting espanso" && espanso restart
+
+# dunst
+    bindsym $mod+m exec "dunstctl close"
+    bindsym $mod+Shift+m exec "dunstctl close_all"
+    bindsym $mod+n exec "dunstctl history-pop"
+    bindsym $mod+Shift+n exec "dunstctl set-paused toggle"
+
+#playerctl keybinding
+	bindsym Pause exec playerctl play-pause
+	bindsym $mod1+Left exec playerctl previous
+	bindsym $mod1+$left exec playerctl previous
+	bindsym $mod1+Right exec playerctl next
+	bindsym $mod1+$right exec playerctl next
+
+	bindsym XF86AudioPlay exec playerctl play
+	bindsym XF86AudioPause exec playerctl pause
+	bindsym XF86AudioPrev exec playerctl prev
+	bindsym XF86AudioNext exec playerctl next
+
+#floating windows
+	for_window [class="GParted"] floating enable
+	for_window [class="Pavucontrol"] floating enable
+	for_window [class="Arandr"] floating enable
+	for_window [class="Shutter"] floating enable
+    for_window [title="^Android Emulator -"] floating enable
+
+# Sreen brightness controls
+	# increase screen brightness
+	bindsym $mod+F8 exec $scriptlocation/changebacklight.sh up
+	bindsym XF86MonBrightnessUp exec $scriptlocation/changebacklight.sh up
+	# decrease screen brightness
+	bindsym $mod+F7 exec $scriptlocation/changebacklight.sh down
+	bindsym XF86MonBrightnessDown exec $scriptlocation/changebacklight.sh down
+
+# Pulse Audio controls
+	bindsym XF86AudioRaiseVolume exec --no-startup-id $scriptlocation/changeVolume +5 #increase sound volume
+	bindsym XF86AudioLowerVolume exec --no-startup-id $scriptlocation/changeVolume -5 #decrease sound volume
+	bindsym XF86AudioMute exec --no-startup-id $scriptlocation/changeVolume # mute sound
+	bindsym $mod+F10 exec --no-startup-id $scriptlocation/changeVolume -2 #decrease sound volume
+	bindsym $mod+F11 exec --no-startup-id $scriptlocation/changeVolume # mute sound
+	bindsym $mod+F12 exec --no-startup-id $scriptlocation/changeVolume +2 #increase sound volume
+
+# Hotkeys for my custum scripts
+	# Lock the screen when scroll lock is pressed
+	bindsym Mod1+Mod4+l exec $scriptlocation/fancy_lock
+	bindsym Scroll_Lock exec $scriptlocation/fancy_lock
+	bindsym $mod+x exec $scriptlocation/fancy_lock
+	bindsym $mod+b exec $scriptlocation/blur_lock
+	# bindsym Scroll_Lock exec $scriptlocation/blur_lock
+	# Hibernate (and lock) the computer using this key combination
+	#bindsym $mod+$mod2+h exec $scriptlocation/hibernate_lock
+	bindsym XF86TouchpadToggle exec $scriptlocation/touchpad_toggle
+
+# Used to configure my screens layout when a new one connects
+    bindsym $mod+Shift+a exec --no-startup-id "xrandr --auto && arandr"
+    bindsym $mod+p exec --no-startup-id "xrandr --auto && arandr"
+
+# Set wallpaper
+    exec_always --no-startup-id "feh --bg-scale $HOME/Pictures/lockscreen/home_screen.png &"
+
+# sway version
+    # bindsym Print               exec "        grim      Pictures/$(date +%Y-%m-%d_%H:%M).png"
+    # bindsym Shift+Print         exec "slurp | grim -g - Pictures/$(date +%Y-%m-%d_%H:%M).png"
+
+# i3 version
+    bindsym --release Print exec "scrot ~/Pictures/screenshot/Screenshot_%Y-%m-%d_%H:%M:%S.png"
+    # bindsym --release shift+Print exec "scrot -s ~/Pictures/Screenshot_%Y-%m-%d_%H:%M:%S.png"
+    bindsym --release shift+Print exec "flameshot gui"
+    bindsym $mod+Shift+s exec "flameshot gui"
+
+bindsym $mod+q exec --no-startup-id qutebrowser
+bindsym $mod2+q exec --no-startup-id "qutebrowser --target private-window"
+bindsym XF86Launch3 exec --no-startup-id "asusctl led-mode -n"
+bindsym XF86KbdBrightnessUp exec --no-startup-id "asusctl -n"
+bindsym XF86KbdBrightnessDown exec --no-startup-id "asusctl -p"
+bindsym XF86Launch4 exec --no-startup-id "asusctl profile -n"
+
+bindsym $mod+F5 exec rofi -modi "clipboard:greenclip print" -show clipboard

@@ -19,10 +19,12 @@ export LANG=en_US.UTF-8
 export TERM="xterm-256color"
 export COLORTERM="truecolor"
 # If you come from bash you might have to change your $PATH.
-export PATH=/home/jan-pieter/.gem/ruby/2.6.0/bin:/home/jan-pieter/.local/bin:/home/jan-pieter/.cargo/bin:/home/jan-pieter/jetbrains-scripts:$PATH
+export PATH=/home/jan-pieter/.gem/ruby/2.6.0/bin:/home/jan-pieter/jetbrains-scripts:$PATH
 export PATH="$PATH:/home/jan-pieter/.dotnet/tools"
 export PATH="$PATH:$(pyenv root)/shims"
 export PATH="$PATH:$HOME/.npm/bin"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
 
 # Set name of the theme to load. Optionally, if you set this to "random"

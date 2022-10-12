@@ -30,7 +30,8 @@ font pango:DejaVu Sans Mono 6
     set $mod2 Mod1
 
 # set some variables
-    set $scriptlocation $HOME/git_repos/custum_scripts
+    # set $scriptlocation $HOME/git_repos/custum_scripts
+    set $scriptlocation $HOME/.local/bin/
     # set $terminal /usr/bin/alacritty
     set $terminal /usr/bin/kitty
 
@@ -325,11 +326,11 @@ set $resize_size 2
 
 # Sreen brightness controls
 	# increase screen brightness
-	bindsym $mod+F8 exec $scriptlocation/changebacklight.sh up
-	bindsym XF86MonBrightnessUp exec $scriptlocation/changebacklight.sh up
+	bindsym $mod+F8 exec $scriptlocation/changebacklight up
+	bindsym XF86MonBrightnessUp exec $scriptlocation/changebacklight up
 	# decrease screen brightness
-	bindsym $mod+F7 exec $scriptlocation/changebacklight.sh down
-	bindsym XF86MonBrightnessDown exec $scriptlocation/changebacklight.sh down
+	bindsym $mod+F7 exec $scriptlocation/changebacklight down
+	bindsym XF86MonBrightnessDown exec $scriptlocation/changebacklight down
 
 # Pulse Audio controls
 	bindsym XF86AudioRaiseVolume exec --no-startup-id $scriptlocation/changeVolume +5 #increase sound volume

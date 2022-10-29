@@ -20,7 +20,7 @@ window:
   # (changes require restart)
   dimensions:
     columns: 0
-    lines: 5000
+    lines: 0
 
   # Adds this many blank pixels of padding around the window
   # Units are physical pixels; this is not DPI aware.

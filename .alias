@@ -17,6 +17,7 @@ alias fuck="sudo"
 alias copy="xclip -selection clipboard"
 alias capsState="xset -q | grep \"Caps Lock\" | sed \"s/^.*Caps Lock: *\([onf]*\) .*$/\1/\""
 alias ayy=yay
+alias "\q"=exit
 alias ":q"=exit
 alias ":wq"=exit
 alias make="make -j8"
@@ -31,6 +32,7 @@ alias discord='discord --no-sandbox'
 alias qr-read=zbarimg
 alias ls="ls --color"
 alias egrep="grep -E"
+alias fixBluetooth="bluetoothctl connect $BT_HEADSET_ADDRESS"
 
 #kitty aliasses
 alias kssh="kitty +kitten ssh"

@@ -250,8 +250,8 @@ set $resize_size 2
 	  mode dock
 	  hidden_state hide
 	  modifier $mod2
-      output HDMI-1-0
-      output HDMI-0
+      #output HDMI-1-0
+      #output HDMI-0
       output eDP-1
       output eDP-1-1
       output eDP-2
@@ -367,6 +367,7 @@ set $resize_size 2
     # bindsym --release shift+Print exec "scrot -s ~/Pictures/Screenshot_%Y-%m-%d_%H:%M:%S.png"
     bindsym --release shift+Print exec "flameshot gui"
     bindsym $mod+Shift+s exec "flameshot gui"
+    bindsym XF86Launch1 exec "flameshot gui"
 
 bindsym $mod+q exec --no-startup-id qutebrowser
 bindsym $mod2+q exec --no-startup-id "qutebrowser --target private-window"

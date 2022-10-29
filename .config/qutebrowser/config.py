@@ -1101,19 +1101,19 @@ config.bind(",tw", "spawn --userscript twitterthreadreader")
 config.bind(",tf", "hint links userscript twitterthreadreader")
 config.bind(
     '<Ctrl+Alt+Shift+e>',
-    'spawn --detach ~/git_repos/custum_scripts/addToMpv Extra "{url}"'
+    'spawn --detach ~/.local/bin/addToMpv Extra "{url}"'
 )
 config.bind(
     '<Ctrl+Alt+Shift+m>',
-    'spawn --detach ~/git_repos/custum_scripts/addToMpv Music "{url}"'
+    'spawn --detach ~/.local/bin/addToMpv Music "{url}"'
 )
 config.bind(
     '<Ctrl+Alt+Shift+v>',
-    'spawn --detach ~/git_repos/custum_scripts/addToMpv Video "{url}"'
+    'spawn --detach ~/.local/bin/addToMpv Video "{url}"'
 )
 config.bind(
     '<Ctrl+Alt+Shift+y>',
-    'spawn --detach ~/git_repos/custum_scripts/addToMpv Series "{url}"'
+    'spawn --detach ~/.local/bin/addToMpv Series "{url}"'
 )
 config.bind('<Ctrl+Alt+Shift+~>', 'spawn --detach mpv {url}')
 config.bind('<Ctrl+Alt+`>', 'hint links spawn --detach mpv {hint-url}')
@@ -1121,19 +1121,19 @@ config.bind('<Ctrl+Backspace>', 'tab-prev')
 config.bind('<Ctrl+Shift+Tab>', 'tab-prev')
 config.bind(
     '<Ctrl+Shift+e>',
-    'hint links spawn --detach ~/git_repos/custum_scripts/addToMpv Extra "{hint-url}"'
+    'hint links spawn --detach ~/.local/bin/addToMpv Extra "{hint-url}"'
 )
 config.bind(
     '<Ctrl+Shift+m>',
-    'hint links spawn --detach ~/git_repos/custum_scripts/addToMpv Music "{hint-url}"'
+    'hint links spawn --detach ~/.local/bin/addToMpv Music "{hint-url}"'
 )
 config.bind(
     '<Ctrl+Shift+v>',
-    'hint links spawn --detach ~/git_repos/custum_scripts/addToMpv Video "{hint-url}"'
+    'hint links spawn --detach ~/.local/bin/addToMpv Video "{hint-url}"'
 )
 config.bind(
     '<Ctrl+Shift+y>',
-    'hint links spawn --detach ~/git_repos/custum_scripts/addToMpv Series "{hint-url}"'
+    'hint links spawn --detach ~/.local/bin/addToMpv Series "{hint-url}"'
 )
 config.bind('<Ctrl+Tab>', 'tab-next')
 config.unbind('<Ctrl+b>')

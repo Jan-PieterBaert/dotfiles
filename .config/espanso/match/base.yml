@@ -8,7 +8,7 @@ matches:
       - name: termdate
         type: shell
         params:
-          cmd: /fast_files/git_repos/custum_scripts/date_script
+          cmd: ~/.local/bin/date_script
   - trigger: ":zws"
     replace: ​
   - trigger: ":plus:"

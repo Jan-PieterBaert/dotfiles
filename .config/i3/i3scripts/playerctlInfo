@@ -1,0 +1,56 @@
+#!/bin/bash
+
+title=$(playerctl metadata title 2>/dev/null|| echo "")
+artist=$(playerctl metadata artist 2>/dev/null || echo "")
+playPauze=$(playerctl status 2>/dev/null || echo "")
+playerName=$(playerctl --list-all | head -n1)
+
+fullText=""
+
+if [ "$(playerctl metadata 2>/dev/null | grep -i coldplay)" ]
+then
+	playerctl next
+	notify-send "I skipped it, fuck coldplay"
+fi
+
+if [ "$artist" ]
+then
+	fullText+="${artist}: "
+fi
+
+if [ "$title" ]
+then
+	fullText+="${title}"
+fi
+
+shortText=$fullText
+
+if [ "$(echo $playPauze | grep Play)" ]
+then
+	fullText+=" ▶"
+fi
+
+#if [ "$(echo $playPauze | grep Pause)" ]
+#then
+#	fullText+=" ⏸"
+#fi
+
+if [ "$(echo $playerName | grep -vy "No players")" ]
+then
+  fullText+=" ($playerName)"
+fi
+
+if [ "$fullText" ]
+then
+	echo $fullText
+  echo $shortText
+else
+	echo "No playerctl playing"
+fi
+
+
+case $BLOCK_BUTTON in
+  1) playerctl play-pause ;;
+  4) playerctl play ;; # scroll up, increase
+  5) playerctl pause ;; # scroll down, decrease
+esac

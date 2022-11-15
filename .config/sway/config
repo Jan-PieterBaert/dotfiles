@@ -53,14 +53,13 @@ font pango:DejaVu Sans Mono 5.5
     bindsym $mod+Shift+q kill
     bindsym $mod2+F4 kill
 
-# Rofi things, it's just the best ever, MAKE ROFI GREAT AGAIN!
-	# alternative to dmenu, we use the rofi-version
-	# bindsym $mod+d exec "LC_ALL=C rofi -show run"
-	bindsym $mod+d exec "LC_ALL=C rofi -show combi -show-icons"
+# Wofi things, it's just the best ever, MAKE WOFI GREAT AGAIN!
+    bindsym $mod+d exec "~/.local/bin/sway_focus"
 	# this shows all open windows across workspaces
-	bindsym $mod+bracketleft exec "LC_ALL=C rofi -show combi -show-icons"
+	bindsym $mod+bracketleft exec "wofi -S drun -Im"
 	# my (local) passwordmanager (unix pass)
-	bindsym $mod+bracketright exec "LC_ALL=C rofi-pass"
+	bindsym $mod+bracketright exec "wofi-pass -t"
+    bindsym $mod2+Space exec "wofi-emoji"
 
 
 # change focus
@@ -225,7 +224,7 @@ set $resize_size 2
 	mode "[l]ogout / [h]ibernate / [r]eboot / [s]hutdown / suspend-[t]hen-hibernate / sus[p]end" {
 		bindsym l exit
 		bindsym t exec systemctl suspend-then-hibernate
-		bindsym h exec hibernate_lock
+		bindsym h exec systemctl hibernate
 		bindsym r exec reboot
 		bindsym s exec shutdown now
 		bindsym p exec systemctl suspend
@@ -374,9 +373,8 @@ bindsym XF86KbdBrightnessUp exec --no-startup-id "asusctl -n"
 bindsym XF86KbdBrightnessDown exec --no-startup-id "asusctl -p"
 bindsym XF86Launch4 exec --no-startup-id "asusctl profile -n"
 
-# bindsym $mod+F5 exec rofi -modi "clipboard:greenclip print" -show clipboard
 exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json" &
-bindsym $mod+F5 exec clipman pick --tool="rofi" --max-items=30 --histpath="~/.local/share/clipman.json"
+bindsym $mod+F5 exec clipman pick --tool="wofi" --max-items=30 --histpath="~/.local/share/clipman.json"
 
 exec swayidle -w \
         before-sleep "loginctl lock-session $XDG_SESSION_ID" \
@@ -390,7 +388,7 @@ input type:touchpad {
 
 input type:keyboard {
     xkb_layout us
-    xkb_variant intl
+    xkb_variant altgr-intl
     xkb_numlock enabled
 }
 

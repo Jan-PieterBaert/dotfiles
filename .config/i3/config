@@ -61,6 +61,8 @@ font pango:DejaVu Sans Mono 6
 	bindsym $mod+bracketleft exec "LC_ALL=C rofi -show combi -show-icons"
 	# my (local) passwordmanager (unix pass)
 	bindsym $mod+bracketright exec "LC_ALL=C rofi-pass"
+    # emoji's
+    bindsym $mod2+e exec "rofi -modi emoji -show emoji"
 
 
 # change focus

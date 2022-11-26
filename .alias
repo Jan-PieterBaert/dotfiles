@@ -71,3 +71,4 @@ alias kelderlisten="curl https://kelder.zeus.ugent.be/messages/ | w3m -T text/ht
 
 alias jekyll="bundle exec jekyll"
 alias qr='qrencode -m 2 -t utf8 <<< "$1"'
+alias chmox="chmod +x"

@@ -376,6 +376,7 @@ bindsym XF86Launch4 exec --no-startup-id "asusctl profile -n"
 exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json" &
 bindsym $mod+F5 exec clipman pick --tool="wofi" --max-items=30 --histpath="~/.local/share/clipman.json"
 
+# Before sleeping, lock sway, which is pausing all music and then executing the lock
 exec swayidle -w \
         before-sleep "loginctl lock-session $XDG_SESSION_ID" \
         lock 'playerctl -a pause && ~/.local/bin/sun_lock'
@@ -389,6 +390,6 @@ input type:touchpad {
 input type:keyboard {
     xkb_layout us
     xkb_variant altgr-intl
-    xkb_numlock enabled
+    # xkb_numlock enabled
 }
 

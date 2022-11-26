@@ -39,3 +39,5 @@ matches:
       Jan-Pieter Baert
   - trigger: ":japiba:"
     replace: "BE0787.708.789"
+  - trigger: ":tot:"
+    replace: "🚄 of 💭"

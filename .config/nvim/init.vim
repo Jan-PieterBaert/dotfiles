@@ -33,6 +33,7 @@ call plug#begin('~/.config/nvim/plugs')
 	Plug 'google/vim-maktaba'
 	Plug 'google/vim-codefmt'
 	Plug 'google/vim-glaive'
+    Plug 'psf/black', { 'branch': 'stable' }
 
 	" Auto pair things like quotes and paratheses
 	Plug 'jiangmiao/auto-pairs'
@@ -161,11 +162,9 @@ set sts=4 sw=4
 set expandtab
 set complete+=k
 " add english words to completion
-	set dictionary+=/usr/share/dict/american-english
-	set dictionary+=/usr/share/dict/british-english
-	set dictionary+=/fast_files/git_repos/wordlists/english-all.txt
+	set dictionary+=~/git_repos/wordlists/english-all.txt
 " add Dutch words to completion
-	set dictionary+=/fast_files/git_repos/wordlists/dutch-all.txt
+	set dictionary+=~/git_repos/wordlists/dutch-all.txt
 	inoremap <F12> <C-X><C-K>
 
 set scrolloff=10

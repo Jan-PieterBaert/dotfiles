@@ -32,7 +32,7 @@ alias discord='discord --no-sandbox'
 alias qr-read=zbarimg
 alias ls="ls --color"
 alias egrep="grep -E"
-alias fixBluetooth="bluetoothctl connect $BT_HEADSET_ADDRESS"
+alias fixHeadset="bluetoothctl connect $BT_HEADSET_ADDRESS"
 
 #kitty aliasses
 alias kssh="kitty +kitten ssh"
@@ -69,4 +69,6 @@ alias keldersay="curl 'https://kelder.zeus.ugent.be/messages/' -H 'Content-Type:
 alias kelderlisten="curl https://kelder.zeus.ugent.be/messages/ | w3m -T text/html -dump | less"
 
 
+alias jekyll="bundle exec jekyll"
 alias qr='qrencode -m 2 -t utf8 <<< "$1"'
+alias chmox="chmod +x"

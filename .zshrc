@@ -144,6 +144,7 @@ export LC_ALL=en_GB.UTF-8
 autoload -U +X bashcompinit && bashcompinit
 PATH="/home/jan-pieter/git_repos/_RedpencilIO/mu-cli/:$PATH"
 source /home/jan-pieter/git_repos/_RedpencilIO/mu-cli/completions
+eval "$(rbenv init - zsh)"
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'

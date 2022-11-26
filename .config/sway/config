@@ -14,8 +14,8 @@
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 5.5
-font pango:DejaVu Sans Mono 6
+font pango:DejaVu Sans Mono 5.5
+# font pango:DejaVu Sans Mono 6.5
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -53,16 +53,13 @@ font pango:DejaVu Sans Mono 6
     bindsym $mod+Shift+q kill
     bindsym $mod2+F4 kill
 
-# Rofi things, it's just the best ever, MAKE ROFI GREAT AGAIN!
-	# alternative to dmenu, we use the rofi-version
-	# bindsym $mod+d exec "LC_ALL=C rofi -show run"
-	bindsym $mod+d exec "LC_ALL=C rofi -show combi -show-icons"
+# Wofi things, it's just the best ever, MAKE WOFI GREAT AGAIN!
+    bindsym $mod+d exec "~/.local/bin/sway_focus"
 	# this shows all open windows across workspaces
-	bindsym $mod+bracketleft exec "LC_ALL=C rofi -show combi -show-icons"
+	bindsym $mod+bracketleft exec "wofi -S drun -Im"
 	# my (local) passwordmanager (unix pass)
-	bindsym $mod+bracketright exec "LC_ALL=C rofi-pass"
-    # emoji's
-    bindsym $mod2+e exec "rofi -modi emoji -show emoji"
+	bindsym $mod+bracketright exec "wofi-pass -t"
+    bindsym $mod2+Space exec "wofi-emoji"
 
 
 # change focus
@@ -145,11 +142,11 @@ font pango:DejaVu Sans Mono 6
 	set $ws12 "12"
 
 # Define screens for workspaces
-workspace $ws0 output HDMI-0 HDMI-1-0
-workspace $ws1 output eDP-1-1 eDP-1 eDP-2
-workspace $ws2 output eDP-1-1 eDP-1 eDP-2
-workspace $ws4 output DP-0.5 DP-1-0.5
-workspace $ws5 output DP-0.6 DP-1-0.6
+#workspace $ws0 output HDMI-0 HDMI-1-0
+#workspace $ws1 output eDP-1-1 eDP-1 eDP-2
+#workspace $ws2 output eDP-1-1 eDP-1 eDP-2
+#workspace $ws4 output DP-0.5 DP-1-0.5
+#workspace $ws5 output DP-0.6 DP-1-0.6
 
 # switch to workspace
 	bindsym $mod+grave workspace $ws0
@@ -182,16 +179,14 @@ workspace $ws5 output DP-0.6 DP-1-0.6
 	bindsym $mod+Shift+equal move container to workspace $ws12
 
 # workspace mods (move to the next or prev open workspace on current display)
-	bindsym --whole-window $mod+Tab workspace next_on_output
-	bindsym --whole-window $mod+Shift+Tab workspace prev_on_output
-	bindsym --whole-window $mod+BackSpace workspace prev_on_output
+	#bindsym --to-code --whole-window $mod+Tab workspace right
+	#bindsym --to-code --whole-window $mod+Shift+Tab workspace left
+	# bindsym --to-code --whole-window $mod+BackSpace workspace left
 
 # reload the configuration file
     bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-    bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-    bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+    # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Switch between greek and us keyboards
     bindsym $mod+Escape exec "/home/jan-pieter/git_repos/custum_scripts/greek-switch.sh switch"
@@ -229,7 +224,7 @@ set $resize_size 2
 	mode "[l]ogout / [h]ibernate / [r]eboot / [s]hutdown / suspend-[t]hen-hibernate / sus[p]end" {
 		bindsym l exit
 		bindsym t exec systemctl suspend-then-hibernate
-		bindsym h exec hibernate_lock
+		bindsym h exec systemctl hibernate
 		bindsym r exec reboot
 		bindsym s exec shutdown now
 		bindsym p exec systemctl suspend
@@ -288,8 +283,8 @@ set $resize_size 2
 	#gaps inner 10
 	#gaps outer 10
 	#smart_gaps on
-	new_window normal 0
-	new_float normal 10
+	default_border normal 0
+	default_floating_border normal 10
 	hide_edge_borders smart
 
 # Move to top right, for video playing
@@ -335,12 +330,10 @@ set $resize_size 2
 	bindsym XF86MonBrightnessDown exec $scriptlocation/changebacklight down
 
 # Pulse Audio controls
-	bindsym XF86AudioRaiseVolume exec --no-startup-id $scriptlocation/changeVolume +5 #increase sound volume
-	bindsym XF86AudioLowerVolume exec --no-startup-id $scriptlocation/changeVolume -5 #decrease sound volume
-	bindsym XF86AudioMute exec --no-startup-id $scriptlocation/changeVolume # mute sound
-	bindsym $mod+F10 exec --no-startup-id $scriptlocation/changeVolume -2 #decrease sound volume
-	bindsym $mod+F11 exec --no-startup-id $scriptlocation/changeVolume # mute sound
-	bindsym $mod+F12 exec --no-startup-id $scriptlocation/changeVolume +2 #increase sound volume
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Hotkeys for my custum scripts
 	# Lock the screen when scroll lock is pressed
@@ -360,16 +353,18 @@ set $resize_size 2
 # Set wallpaper
     exec_always --no-startup-id "feh --bg-scale $HOME/Pictures/lockscreen/home_screen.png &"
 
+output eDP-1 bg $HOME/Pictures/lockscreen/home_screen.png stretch
+
 # sway version
-    # bindsym Print               exec "        grim      Pictures/$(date +%Y-%m-%d_%H:%M).png"
-    # bindsym Shift+Print         exec "slurp | grim -g - Pictures/$(date +%Y-%m-%d_%H:%M).png"
+    bindsym shift+Print exec IMG=~/Pictures/screenshot/Screenshot_%Y-%m-%d_%H:%M:%S.png && grim -g "$(slurp)" $IMG && wl-copy < $IMG
+    bindsym $mod+Shift+s exec IMG=~/Pictures/screenshot/Screenshot_%Y-%m-%d_%H:%M:%S.png && grim -g "$(slurp)" $IMG && wl-copy < $IMG
+    bindsym XF86Launch1 exec IMG=~/Pictures/screenshot/Screenshot_%Y-%m-%d_%H:%M:%S.png && grim -g "$(slurp)" $IMG && wl-copy < $IMG
 
 # i3 version
-    bindsym --release Print exec "scrot ~/Pictures/screenshot/Screenshot_%Y-%m-%d_%H:%M:%S.png"
+    # bindsym --release Print exec "scrot ~/Pictures/screenshot/Screenshot_%Y-%m-%d_%H:%M:%S.png"
     # bindsym --release shift+Print exec "scrot -s ~/Pictures/Screenshot_%Y-%m-%d_%H:%M:%S.png"
-    bindsym --release shift+Print exec "flameshot gui"
-    bindsym $mod+Shift+s exec "flameshot gui"
-    bindsym XF86Launch1 exec "flameshot gui"
+    # bindsym $mod+Shift+s exec "flameshot gui"
+    # bindsym XF86Launch1 exec "flameshot gui"
 
 bindsym $mod+q exec --no-startup-id qutebrowser
 bindsym $mod2+q exec --no-startup-id "qutebrowser --target private-window"
@@ -378,4 +373,23 @@ bindsym XF86KbdBrightnessUp exec --no-startup-id "asusctl -n"
 bindsym XF86KbdBrightnessDown exec --no-startup-id "asusctl -p"
 bindsym XF86Launch4 exec --no-startup-id "asusctl profile -n"
 
-bindsym $mod+F5 exec rofi -modi "clipboard:greenclip print" -show clipboard
+exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json" &
+bindsym $mod+F5 exec clipman pick --tool="wofi" --max-items=30 --histpath="~/.local/share/clipman.json"
+
+# Before sleeping, lock sway, which is pausing all music and then executing the lock
+exec swayidle -w \
+        before-sleep "loginctl lock-session $XDG_SESSION_ID" \
+        lock 'playerctl -a pause && ~/.local/bin/sun_lock'
+
+input type:touchpad {
+    # left_handed enabled
+    tap enabled
+}
+
+
+input type:keyboard {
+    xkb_layout us
+    xkb_variant altgr-intl
+    # xkb_numlock enabled
+}
+

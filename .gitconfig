@@ -6,8 +6,6 @@
 [hub]
 	host = github.com
 	host = github.ugent.be
-[includeIf "gitdir:~/git_repos/_StuW/"]
-    path = ~/git_repos/git-configs/ugent
 [commit]
 	gpgsign = yes
 [color]
@@ -38,3 +36,6 @@
 	required = true
 [checkout]
 	defaultRemote = origin
+
+[includeIf "gitdir:~/git_repos/_StuW/"]
+    path = ~/git_repos/git-configs/ugent

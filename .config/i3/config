@@ -56,7 +56,7 @@ font pango:DejaVu Sans Mono 6
 # Rofi things, it's just the best ever, MAKE ROFI GREAT AGAIN!
 	# alternative to dmenu, we use the rofi-version
 	# bindsym $mod+d exec "LC_ALL=C rofi -show run"
-	bindsym $mod+d exec "LC_ALL=C rofi -show combi -show-icons"
+	bindsym $mod+d exec "rofi -show combi -terminal $terminal -show-icons"
 	# this shows all open windows across workspaces
 	bindsym $mod+bracketleft exec "LC_ALL=C rofi -show combi -show-icons"
 	# my (local) passwordmanager (unix pass)

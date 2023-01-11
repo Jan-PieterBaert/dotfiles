@@ -145,10 +145,10 @@ font pango:DejaVu Sans Mono 6
 	set $ws12 "12"
 
 # Define screens for workspaces
-workspace $ws0 output HDMI-0 HDMI-1-0
+workspace $ws0 output DP-0.5 DP-1-0.5
 workspace $ws1 output eDP-1-1 eDP-1 eDP-2
 workspace $ws2 output eDP-1-1 eDP-1 eDP-2
-workspace $ws4 output DP-0.5 DP-1-0.5
+workspace $ws4 output HDMI-0 HDMI-1-0
 workspace $ws5 output DP-0.6 DP-1-0.6
 
 # switch to workspace

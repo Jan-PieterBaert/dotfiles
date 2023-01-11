@@ -534,7 +534,7 @@ c.editor.encoding = 'utf-8'
 #   - unique-match: Auto-follow whenever there is a unique non-empty match in either the hint string (word mode) or filter (number mode).
 #   - full-match: Follow the hint when the user typed the whole hint (letter, word or number mode) or the element's text (only in number mode).
 #   - never: The user will always need to press Enter to follow a hint.
-c.hints.auto_follow = 'unique-match'
+c.hints.auto_follow = 'full-match'
 
 # Duration (in milliseconds) to ignore normal-mode key bindings after a
 # successful auto-follow.
@@ -544,10 +544,6 @@ c.hints.auto_follow_timeout = 100
 # CSS border value for hints.
 # Type: String
 c.hints.border = '1px solid #E3BE23'
-
-# Characters used for hint strings.
-# Type: UniqueCharString
-c.hints.chars = 'qwertyuiasdfghjzxcvbnm'
 
 # Dictionary file to be used by the word hints.
 # Type: File
@@ -567,7 +563,7 @@ c.hints.min_chars = 2
 #   - number: Use numeric hints. (In this mode you can also type letters from the hinted element to filter and reduce the number of elements that are hinted.)
 #   - letter: Use the characters in the `hints.chars` setting.
 #   - word: Use hints words based on the html elements and the extra words.
-c.hints.mode = 'letter'
+c.hints.mode = 'word'
 
 # Comma-separated list of regular expressions to use for 'next' links.
 # Type: List of Regex
@@ -1159,3 +1155,20 @@ config.bind('m', 'quickmark-save')
 config.unbind('q')
 config.bind('qr', 'spawn -u qr')
 config.unbind('wB')
+
+
+from PyQt5.QtCore import QUrl
+from qutebrowser.api import interceptor
+
+def domain_redirect(_from, _to):
+    def intercept(info: interceptor.Request):
+        if info.request_url.host() == _from:
+            new_url = QUrl(info.request_url)
+            new_url.setHost(_to)
+            try:
+                info.redirect(new_url)
+            except interceptor.interceptors.RedirectException:
+                pass
+    interceptor.register(intercept)
+
+# domain_redirect('twitter.com', 'nitter.net')

@@ -27,8 +27,12 @@ matches:
     replace: ✅
   - trigger: ":ups:"
     replace: 🙃
+  - trigger: ":melting:"
+    replace: 🫠
   - trigger: ":deg:"
     replace: °
+  - trigger: ":full_name:"
+    replace: "Jan-Pieter Philip Isabelle Baert"
   - trigger: ":end_of_mail_en"
     replace: |-
       Kind regards,

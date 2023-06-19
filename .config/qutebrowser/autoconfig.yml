@@ -6,8 +6,16 @@
 
 config_version: 2
 settings:
+  content.geolocation:
+    https://bvg-apps.hafas.de: false
   content.notifications.enabled:
+    https://_jellyfin.r.gjp.li: true
+    https://chat.semte.ch: true
+    https://jellyfin.r.gjp.li: false
     https://mattermost.ilabt.imec.be: true
+    https://messages.google.com: true
     https://www.vrt.be: false
   content.pdfjs:
-    global: false
+    global: true
+  tabs.show:
+    global: multiple

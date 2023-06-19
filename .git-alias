@@ -1,3 +1,4 @@
+# Git aliases
 alias ga='git add'
 alias gaa='git add --all'
 alias gam='git am'
@@ -101,6 +102,7 @@ alias gpp='git pull origin && git push origin'
 alias gpr='git pull --rebase'
 alias gpristine='git reset --hard && git clean -dffx'
 alias gpsup='git push --set-upstream origin $(git_current_branch)'
+alias gpt='git push origin && git push origin --tags'
 alias gpu='git push upstream'
 alias gpv='git push -v'
 alias gr='git remote'
@@ -327,3 +329,7 @@ alias dupomi='dotfiles pull --rebase=interactive origin $(dotfiles_main_branch)'
 alias dupv='dotfiles pull --rebase -v'
 alias dwch='dotfiles whatchanged -p --abbrev-commit --pretty=medium'
 alias dwip='dotfiles add -A; dotfiles rm $(dotfiles ls-files --deleted) 2> /dev/null; dotfiles commit --no-verify --no-gpg-sign -m "--wip-- [skip ci]"'
+
+# hub aliases
+alias hco='hub pr checkout'
+alias hprl='hub pr list'

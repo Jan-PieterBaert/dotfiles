@@ -56,6 +56,7 @@ font pango:DejaVu Sans Mono 6
 # Rofi things, it's just the best ever, MAKE ROFI GREAT AGAIN!
 	# alternative to dmenu, we use the rofi-version
 	# bindsym $mod+d exec "LC_ALL=C rofi -show run"
+    bindsym $mod+c exec "rofi -show calc -modi calc -no-show-match -no-sort"
 	bindsym $mod+d exec "rofi -show combi -terminal $terminal -show-icons"
 	# this shows all open windows across workspaces
 	bindsym $mod+bracketleft exec "LC_ALL=C rofi -show combi -show-icons"
@@ -145,10 +146,10 @@ font pango:DejaVu Sans Mono 6
 	set $ws12 "12"
 
 # Define screens for workspaces
-workspace $ws0 output DP-0.5 DP-1-0.5
+workspace $ws0 output HDMI-0 HDMI-1-0
 workspace $ws1 output eDP-1-1 eDP-1 eDP-2
 workspace $ws2 output eDP-1-1 eDP-1 eDP-2
-workspace $ws4 output HDMI-0 HDMI-1-0
+workspace $ws4 output DP-0.5 DP-1-0.5
 workspace $ws5 output DP-0.6 DP-1-0.6
 
 # switch to workspace
@@ -308,16 +309,15 @@ set $resize_size 2
     bindsym $mod+Shift+n exec "dunstctl set-paused toggle"
 
 #playerctl keybinding
-	bindsym Pause exec playerctl play-pause
-	bindsym $mod1+Left exec playerctl previous
-	bindsym $mod1+$left exec playerctl previous
-	bindsym $mod1+Right exec playerctl next
-	bindsym $mod1+$right exec playerctl next
+	bindsym $mod1+Left exec $scriptlocation/playerctl.py previous
+	bindsym $mod1+$left exec $scriptlocation/playerctl.py previous
+	bindsym $mod1+Right exec $scriptlocation/playerctl.py next
+	bindsym $mod1+$right exec $scriptlocation/playerctl.py next
 
-	bindsym XF86AudioPlay exec playerctl play
-	bindsym XF86AudioPause exec playerctl pause
-	bindsym XF86AudioPrev exec playerctl prev
-	bindsym XF86AudioNext exec playerctl next
+	bindsym XF86AudioPlay exec $scriptlocation/playerctl.py play
+	bindsym XF86AudioPause exec $scriptlocation/playerctl.py pause
+	bindsym XF86AudioPrev exec $scriptlocation/playerctl.py prev
+	bindsym XF86AudioNext exec $scriptlocation/playerctl.py next
 
 #floating windows
 	for_window [class="GParted"] floating enable

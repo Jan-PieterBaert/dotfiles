@@ -9,6 +9,7 @@ alias vi=vim
 alias vim="nvim -p"
 alias se=sudoedit
 alias rsync="rsync --progress"
+alias drc="docker-compose"
 
 # general aliasses
 alias update_time="sudo ntpdate -s ntp.ugent.be"

@@ -1101,7 +1101,7 @@ config.bind(
 )
 config.bind(
     '<Ctrl+Alt+Shift+m>',
-    'spawn --detach ~/.local/bin/addToMpv Music "{url}"'
+    'spawn --detach ~/.local/bin/addToMpv Mega "{url}"'
 )
 config.bind(
     '<Ctrl+Alt+Shift+v>',
@@ -1121,7 +1121,7 @@ config.bind(
 )
 config.bind(
     '<Ctrl+Shift+m>',
-    'hint links spawn --detach ~/.local/bin/addToMpv Music "{hint-url}"'
+    'hint links spawn --detach ~/.local/bin/addToMpv Mega "{hint-url}"'
 )
 config.bind(
     '<Ctrl+Shift+v>',

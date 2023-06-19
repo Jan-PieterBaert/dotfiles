@@ -141,9 +141,6 @@ setopt SHARE_HISTORY
 export LC_ALL=en_GB.UTF-8
 
 # redpencil mu cli
-# autoload -U +X bashcompinit && bashcompinit
-# PATH="/home/jan-pieter/git_repos/_RedpencilIO/mu-cli/:$PATH"
-# source /home/jan-pieter/git_repos/_RedpencilIO/mu-cli/completions
 
 eval "$(rbenv init - zsh)"
 
